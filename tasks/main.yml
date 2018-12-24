@@ -30,7 +30,7 @@
 #     mode: 0755
 
 - name: "Download terraform {{ terraform_version }} binary."
-  command: wget {{ terraform_download_url }} --directory-prefix=/tmp/
+  command: wget {{ terraform_download_url }} --directory-prefix=/tmp/ warn=False
 
 - name: "Unarchive terraform {{ terraform_version }} zip."
   unarchive:
