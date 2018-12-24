@@ -30,12 +30,12 @@
 #     mode: 0755
 
 - name: "Download terraform {{ terraform_version }} binary."
-  command: wget {{ terraform_download_url }} --directory-prefix=/tmp/
+  command: wget {{ terraform_download_url }} --directory-prefix=/tmp/ warn=False
 
 - name: "Unarchive terraform {{ terraform_version }} zip."
   unarchive:
     copy: no
-    src:  "/tmp/terraform_{{ terraform_version }}_darwin_amd64.zip"
+    src:  "/tmp/terraform_{{ terraform_version }}_{{ ansible_system | lower }}_amd64.zip"
     dest: "{{ terraform_install_dir }}"
     creates: "{{ terraform_install_dir }}/terraform"
     mode: 0755
